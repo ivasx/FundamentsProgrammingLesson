@@ -1,28 +1,18 @@
-def greet_message(name, surname):
-    name = validation(name)
-    surname = validation(surname)
-    print(f"Hello world! My name is {name} {surname}")
+def function_decorator(function):
+   def wrapper():
+       print("До виклику функції")
+       function()
+       print("Після виклику функції")
 
-def validation(word):
-    while not word.strip() or not any(char.isalpha() for char in word):
-        word = input(f"The entered data ('{word}') is empty or does not contain any letters. Try again: ")
-    while not all(char.isalpha() or char == ' ' or char == '-' for char in word):
-        word = input(f"The entered data ('{word}') contains invalid characters. Only letters, spaces, and hyphens are allowed. Try again: ")
-    
-    if ' ' in word:
-        word = ' '.join([part.capitalize() for part in word.split()])
-    elif '-' in word:
-        word = '-'.join([part.capitalize() for part in word.split('-')])
-    else:
-        word = word.capitalize()
-        
-    return word
+   return wrapper
 
-def main():
-    name = input("Enter name: ")
-    surname = input("Enter surname: ")
+@function_decorator
+def addition():
+   first_number = input("Введіть перше число: ")
+   second_number = input("Введіть друге число: ")
+   result = first_number + second_number
+   print(f"{first_number} + {second_number} = {result}")
+   return result
 
-    greet_message(name, surname)
-
-main()
-
+if __name__ == '__main__':
+   addition()
