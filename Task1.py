@@ -1,18 +1,16 @@
-def function_decorator(function):
-   def wrapper():
-       print("До виклику функції")
-       function()
-       print("Після виклику функції")
+def calculate_average(*args):
+    if not args:
+        return 0
 
-   return wrapper
+    sum_args = 0
+    count = 0
 
-@function_decorator
-def addition():
-   first_number = input("Введіть перше число: ")
-   second_number = input("Введіть друге число: ")
-   result = first_number + second_number
-   print(f"{first_number} + {second_number} = {result}")
-   return result
+    for i in args:
+        sum_args += i
+        count += 1
 
-if __name__ == '__main__':
-   addition()
+    return sum_args / count
+
+print(calculate_average(2, 4, 6))
+print(calculate_average(1, 3, 5, 7, 9))
+print(calculate_average())
