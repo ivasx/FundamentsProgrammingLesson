@@ -1,12 +1,25 @@
-def greet_students(greeting, *names):
-   if not names:
-       print("Немає студентів для привітання")
-       return
+from functools import wraps
+def log_calls(filename):
+   def log_decorator(function):
+       @wraps(function)
+       def wrapper(*args):
+           with open(filename, 'a', encoding='utf-8') as file:
+               file.write(f"Функція {function.__name__} викликана з аргументами {args}, результат: {function(*args)}")
+               file.write("\n")
 
 
-   for name in names:
-       print(f"{greeting} {name}.")
-   return
+       return wrapper
+   return log_decorator
 
 
-greet_students("Вітаю!", "Івас", "Лалала", "Оп оп оп")
+
+
+@log_calls("log.txt")
+def multiply(first_number, second_number):
+   return first_number * second_number
+
+
+
+
+multiply(3, 4)
+multiply(5, 2)
