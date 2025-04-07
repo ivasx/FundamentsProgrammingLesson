@@ -1,12 +1,26 @@
-def print_student_info(**kwargs):
-  if not kwargs:
-      print("Немає переданих аргументів функції.")
-  for key, value in kwargs.items():
-      print(f'{key.capitalize()} = {value}')
+from functools import wraps
+
+def cache_results(function):
+   cache = {}
+
+   @wraps(function)
+   def wrapper(*args):
+       if args in cache:
+           return cache[args]
+       else:
+           result = function(*args)
+           cache[args] = result
+           return result
+   return wrapper
+
+@cache_results
+def add(a, b):
+   print(f"Обчислення {a} + {b}")
+   return a + b
 
 
-
-
-print_student_info()
-print_student_info(імя = "Івас", прізвище = "Амброзяк")
-print_student_info(студент = "Опа")
+print(add(2, 3))
+print("----------------")
+print(add(2, 3))
+print("----------------")
+print(add(4, 5))
