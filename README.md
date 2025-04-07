@@ -38,3 +38,14 @@
    ```bash
    git clone https://github.com/ivasx/FundamentsProgrammingLesson.git
    cd FundamentsProgrammingLesson
+
+---
+
+## 📬 Зворотний зв'язок
+
+Якщо маєш пропозиції або знайшов помилку — відкрий [Issue](https://github.com/ivasx/FundamentsProgrammingLesson/issues) або створи Pull Request ✨
+
+---
+
+## 👨‍🏫 Автор - `ivasx`
+[GitHub профіль](https://github.com/ivasx)
