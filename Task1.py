@@ -1,16 +1,23 @@
-def calculate_average(*args):
-    if not args:
-        return 0
+def tagging(tag="h1"):
+   def tagging_decorator(function):
+       def wrapper(*args, **kwargs):
+           return f"<{tag}>{function(*args, **kwargs)}</{tag}>"
 
-    sum_args = 0
-    count = 0
 
-    for i in args:
-        sum_args += i
-        count += 1
+       return wrapper
 
-    return sum_args / count
 
-print(calculate_average(2, 4, 6))
-print(calculate_average(1, 3, 5, 7, 9))
-print(calculate_average())
+   return tagging_decorator
+
+
+
+
+@tagging()
+def make_lowercase(string):
+   return string.lower()
+
+
+
+
+if __name__ == '__main__':
+   print(make_lowercase("PYTHON"))
