@@ -14,8 +14,15 @@ def add_task(*descriptions):
     :param descriptions:
     """
 
-    with open('tasks.json', 'r', encoding='utf-8') as file:
-        tasks = json.load(file)
+    with open('tasks.json', 'a+', encoding='utf-8') as file:
+        file.seek(0)
+        content = file.read()
+
+        if not content.strip():
+            file.write('[]')
+            content = '[]'
+
+        tasks = json.loads(content)
 
     results = []
     used_ids = set()
@@ -45,6 +52,7 @@ def add_task(*descriptions):
     return result
 
 @decorators.log_calls
+@decorators.existence
 def delete_task(*id):
     """
     Функція приймає один або декілька унікальних номерів завдань (ID)
@@ -117,10 +125,11 @@ def done_task(*id):
 
 
 if __name__ == '__main__':
-    add_task('Поприбирати', 'поїсти', 'випити кави')
-    show_tasks()
+    add_task('Поприбирати')
+             #, 'поїсти', 'випити кави')
+    #show_tasks()
     delete_task(1, 3)
-    done_task(2)
-    show_tasks()
+    #done_task(2)
+    #show_tasks()
 
 
