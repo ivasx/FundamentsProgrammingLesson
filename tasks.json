@@ -1,0 +1,17 @@
+[
+    {
+        "description": "Зробити домашнє",
+        "id": 1,
+        "done": true
+    },
+    {
+        "description": "Піти на каву",
+        "id": 2,
+        "done": true
+    },
+    {
+        "description": "Вимити посуд",
+        "id": 3,
+        "done": true
+    }
+]
