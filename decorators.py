@@ -21,9 +21,11 @@ def log_calls(function):
 def existence(function):
     @wraps(function)
     def wrapper(*args):
+
         with open('tasks.json', 'a+', encoding='utf-8') as file:
             file.seek(0)
             content = file.read()
+
             if not content.strip():
                 file.write('[]')
                 tasks = []
@@ -31,6 +33,7 @@ def existence(function):
                 tasks = json.loads(content)
 
         valid_ids = []
+        logs = []
 
         for task_id in args:
             found = False
@@ -42,7 +45,21 @@ def existence(function):
             if found:
                 valid_ids.append(task_id)
             else:
-                result = (f'Завдання з ID {task_id} не знайдено.')
+                logs.append(f'Завдання з ID {task_id} не знайдено.')
 
-        return function(*args)
+        if not valid_ids:
+            full_result = '\n'.join(logs)
+            print(full_result)
+            return full_result
+
+        result = function(*valid_ids)
+
+        if logs:
+            full_result = '\n'.join(logs + [result])
+        else:
+            full_result = result
+
+        print(full_result)
+        return full_result
+
     return wrapper
