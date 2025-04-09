@@ -68,7 +68,7 @@ def delete_task(*id):
 
     for task in tasks:
         if task['id'] in id:
-            results.append(f'Завдання "{task["description"]}" видалено.')
+            results.append(f'Завдання "{task["description"]}" з ID {task["id"]} видалено.')
         else:
             new_tasks.append(task)
 
@@ -76,7 +76,7 @@ def delete_task(*id):
         json.dump(new_tasks, file, indent=4, ensure_ascii=False)
 
     result = '\n'.join(results)
-    print(result)
+    #print(result)
     return result
 
 @decorators.log_calls
@@ -86,8 +86,19 @@ def show_tasks():
     Не потребує жодних аргументів.
     """
 
-    with open('tasks.json', 'r', encoding='utf-8') as file:
-        tasks = json.load(file)
+    with open('tasks.json', 'a+', encoding='utf-8') as file:
+        file.seek(0)
+        content = file.read()
+
+        if not content.strip():
+            file.write('[]')
+            tasks = []
+        else:
+            tasks = json.loads(content)
+
+    if not tasks:
+        print('⚠️ Немає жодної задачі.')
+        return 'Список задач порожній.'
 
     print('—' * 30)
     for task in tasks:
@@ -98,11 +109,12 @@ def show_tasks():
     return 'Відображено всі завдання.'
 
 @decorators.log_calls
-def done_task(*id):
+@decorators.existence
+def done_task(*ids):
     """
     Функція приймає один або декілька унікальних номерів завдань (ID)
     в якості параметру, та позначає завдання з такими ID виконаними
-    :param id:
+    :param ids:
     """
 
     with open('tasks.json', 'r', encoding='utf-8') as file:
@@ -111,25 +123,13 @@ def done_task(*id):
     results = []
 
     for task in tasks:
-        if task['id'] in id:
+        if task['id'] in ids:
             task['done'] = True
-            results.append(f'Завдання "{task["description"]}" позначено як виконане.')
+            results.append(f'Завдання "{task["description"]}" з ID {task["id"]} позначено як виконане.')
 
     with open('tasks.json', 'w', encoding='utf-8') as file:
         json.dump(tasks, file, indent=4, ensure_ascii=False)
 
     result = '\n'.join(results)
-    print(result)
+    #print(result)
     return result
-
-
-
-if __name__ == '__main__':
-    add_task('Поприбирати')
-             #, 'поїсти', 'випити кави')
-    #show_tasks()
-    delete_task(1, 3)
-    #done_task(2)
-    #show_tasks()
-
-
