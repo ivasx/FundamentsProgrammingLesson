@@ -1,0 +1,24 @@
+class MediaPlayer:
+   def __init__(self, file=None):
+       self.filename = file
+
+   def open(self, file):
+       self.filename = file
+
+
+   def play(self):
+       if self.filename:
+           print(f"Відтворення {self.filename}")
+       else:
+           print("Файл не відкритий")
+
+if __name__ == '__main__':
+   media1 = MediaPlayer()
+   media2 = MediaPlayer()
+
+
+   media1.open("filemedia1")
+   media2.open("filemedia2")
+
+   media1.play()
+   media2.play()
