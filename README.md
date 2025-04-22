@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Практична робота 23(9)</title>
 </head>
 <body>
   <h1>✅ Практична робота 23(9) – Модифікатори доступу. Геттери та сеттери</h1>
