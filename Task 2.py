@@ -12,9 +12,10 @@ class Money:
         return self.__money
 
     def add_money(self, money):
-        self.__money = self.__money + Money.get_money(money)
+        self.__money += money.get_money()
 
-    def __check_money(self, money):
+    @staticmethod
+    def __check_money(money):
         if isinstance(money, int) and money >= 0:
             return True
         else:

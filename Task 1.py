@@ -1,5 +1,6 @@
 class Clock:
     def __init__(self, time = 0):
+        self.__time = None
         self.set_time(time)
 
     def set_time(self, time):
@@ -11,8 +12,9 @@ class Clock:
 
     def get_time(self):
         return self.__time
-
-    def __check_time(self, time):
+    
+    @staticmethod
+    def __check_time(time):
         if isinstance(time, int) and 0 <= time < 100000:
             return True
         else:
