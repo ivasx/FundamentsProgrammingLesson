@@ -5,31 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <h1>✅ Практична робота 24(10) – Приватні змінні, геттери та сеттери</h1>
+  <h1>✅ Практична робота 24(10) – Класи, методи класу, робота з об'єктами</h1>
 
   <p>Ласкаво просимо до гілки <strong>PracticalWork10</strong>!<br>
-  Ця робота допоможе краще закріпити знання роботи з приватними змінними, геттерами та сеттерами в Python.</p>
+  Ця робота допоможе закріпити навички створення класів, використання методів класу, роботи з об'єктами та взаємодії між класами в Python.</p>
 
   <hr>
 
   <h2>📚 Завдання</h2>
   <ul>
-    <li><strong>Завдання 1 – Clock</strong><br>
-      Клас <code>Clock</code>: використання приватної змінної для зберігання часу, методи встановлення та перевірки часу.
+    <li><strong>Завдання 1 – CardCheck</strong><br>
+      Клас <code>CardCheck</code>: перевірка номера банківської картки та імені користувача за допомогою класових і статичних методів.
     </li>
-    <li><strong>Завдання 2 – Money</strong><br>
-      Клас <code>Money</code>: управління приватною змінною для зберігання коштів, додавання коштів, перевірка введення.
-    </li>
-    <li><strong>Завдання 3 – Book</strong><br>
-      Клас <code>Book</code>: геттери та сеттери для автора, назви та ціни книги.
+    <li><strong>Завдання 2 – Video та YouTube</strong><br>
+      Класи <code>Video</code> та <code>YouTube</code>: створення відео, додавання до списку відео на YouTube і їх відтворення.</li>
+    <li><strong>Завдання 3 – AppStore та Application</strong><br>
+      Класи <code>AppStore</code> і <code>Application</code>: додавання, видалення та блокування додатків у магазині застосунків.
     </li>
   </ul>
 
   <h2>📂 Структура</h2>
   <ul>
-    <li><code>Task1.py</code> – клас <code>Clock</code>: створення об'єкта годинника та встановлення часу.</li>
-    <li><code>Task2.py</code> – клас <code>Money</code>: робота з коштами: зміна, додавання та отримання балансу.</li>
-    <li><code>Task3.py</code> – клас <code>Book</code>: робота з приватними властивостями книги через геттери та сеттери.</li>
+    <li><code>Task1.py</code> – клас <code>CardCheck</code>: перевірка номера картки та імені користувача.</li>
+    <li><code>Task2.py</code> – класи <code>Video</code> і <code>YouTube</code>: створення та відтворення відео.</li>
+    <li><code>Task3.py</code> – класи <code>AppStore</code> і <code>Application</code>: робота з додатками в магазині застосунків.</li>
   </ul>
 
   <h2>💡 Як почати роботу</h2>
@@ -38,7 +37,7 @@
       <pre><code>git clone https://github.com/ivasx/FundamentsProgrammingLesson.git
 cd FundamentsProgrammingLesson</code></pre>
     </li>
-    <li>Перемкнись на гілку:
+    <li>Перемкнись на цю гілку:
       <pre><code>git checkout PracticalWork10</code></pre>
     </li>
     <li>Запусти <code>TaskX.py</code> для роботи з програмою:
