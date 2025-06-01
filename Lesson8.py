@@ -13,3 +13,4 @@ y = 1.85
 
 print(y >= -2 and y <= 5)
 print(bool(""))
+print(ord("q"))
