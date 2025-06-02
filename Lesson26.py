@@ -10,3 +10,7 @@ for i in range(N):
 
 for r in P:
     print(r)
+
+
+HelloWorld = print
+HelloWorld("print")
